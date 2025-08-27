@@ -1,0 +1,86 @@
+.dashboard {
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(0, 255, 255, 0.15), transparent 40%),
+              radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.15), transparent 40%),
+              linear-gradient(135deg, #020617, #0a0f24, #0f172a);
+  background-size: 200% 200%;
+  animation: neonShift 12s ease infinite;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+@keyframes neonShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "profile profile profile"
+    "stats goal ."
+    "card1 card2 card3"
+    "card4 card5 card6"
+    "achievements achievements recent"
+    "chart chart chart";
+  gap: 20px;
+}
+.profile-card { grid-area: profile; }
+.global-stats-card { grid-area: stats; }  
+.milestone-card { grid-area: goal; }
+
+.card1 { grid-area: card1; }
+.card2 { grid-area: card2; }
+.card3 { grid-area: card3; }
+.card4 { grid-area: card4; }
+.card5 { grid-area: card5; }
+.card6 { grid-area: card6; }
+
+.achievements-card { grid-area: achievements; }
+.recent-activity-card { grid-area: recent; }
+.chart-card { grid-area: chart; }
+
+.container-card,
+.chart-card {
+  background: #12151a;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2, 230, 131, 0.443);
+}
+
+.container-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.inner-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inner-card {
+  background: #1c1f2b;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
