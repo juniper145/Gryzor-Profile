@@ -20,17 +20,18 @@
   flex-direction: column;
   gap: 10px;
 }
-
 .inner-section-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(130, 56, 56, 0.05);
   padding: 10px 14px;
   border-radius: 12px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;  /* shows it's clickable/hoverable */
 }
 
 .inner-section-card:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px) scale(1.02);  /* slightly lifts and scales */
+  background: rgba(46, 76, 136, 0.12);   /* slightly brighter background */
+  box-shadow: 0 6px 12px rgba(201, 57, 57, 0.3);  /* subtle shadow on hover */
 }
 
 .inner-title {

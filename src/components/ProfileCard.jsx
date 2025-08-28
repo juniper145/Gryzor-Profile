@@ -1,48 +1,37 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/ProfileCard.css";
 
 export default function ProfileCard({
   gamerTag,
+  discord,
   title,
   status,
   hoursAllTime,
   streakDays,
-  avatar,
-  discord,
-  phrase,
+  avatar
 }) {
   return (
     <div className="profile-card">
       <div className="profile-content">
-        {/* Avatar */}
         <div className="avatar-wrapper">
-          {avatar ? (
-            <img className="avatar" src={avatar} alt={`${gamerTag} avatar`} />
-          ) : (
-            <div className="avatar placeholder">🎮</div>
-          )}
+          <img src={avatar} alt={gamerTag} className="avatar" />
         </div>
-
-        {/* Info beside avatar */}
         <div className="profile-info">
           <div className="profile-header">
-            <h1 className="gamer-tag">{gamerTag}</h1>
-            {discord && <p className="discord">@{discord}</p>}
-            {status && <span className={`status ${status.toLowerCase()}`}>{status}</span>}
+            <h2 className="gamer-tag">{gamerTag}</h2>
+            <p className="discord">{discord}</p>
+            <span className="status">{status}</span>
           </div>
-
-          <h2 className="profile-title">{title}</h2>
-
-          {phrase && <p className="profile-phrase">"{phrase}"</p>}
-
+          <p className="profile-title">{title}</p>
           <div className="profile-stats">
             <div className="stat-item">
               <span className="stat-value">{hoursAllTime}</span>
-              <span className="stat-label">All-time Hours</span>
+              <span className="stat-label">Hours Played</span>
             </div>
             <div className="stat-item">
-              <span className="stat-value">{streakDays}d</span>
-              <span className="stat-label">Streak</span>
+              <span className="stat-value">{streakDays}</span>
+              <span className="stat-label">Streak Days</span>
             </div>
           </div>
         </div>
@@ -50,3 +39,21 @@ export default function ProfileCard({
     </div>
   );
 }
+
+ProfileCard.propTypes = {
+  gamerTag: PropTypes.string.isRequired,
+  discord: PropTypes.string,
+  title: PropTypes.string,
+  status: PropTypes.string,
+  hoursAllTime: PropTypes.number,
+  streakDays: PropTypes.number,
+  avatar: PropTypes.string.isRequired
+};
+
+ProfileCard.defaultProps = {
+  discord: "",
+  title: "",
+  status: "Offline",
+  hoursAllTime: 0,
+  streakDays: 0
+};

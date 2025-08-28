@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/GameCard.css";
 
 export default function GameCard({
@@ -6,63 +7,49 @@ export default function GameCard({
   ign,
   hours,
   rank,
-  yearstarted,
   stats,
   image,
-  achievements = [],
-  className 
+  achievements
 }) {
-  const hasNew = Boolean(yearstarted);
-
   return (
-    <div className={`inner-card game-card ${className || ""}`}>
-      {/* Thumbnail / Logo */}
-      {image && <img src={image} alt={name} className="game-thumb" />}
-
-      {/* Header */}
-      <div className="game-header">
-        <div className="title-block">
-          <h4 className="game-title">{name}</h4>
-          {ign && <p className="ign">IGN: {ign}</p>}
-        </div>
-        {hasNew && <span className="badge">New!</span>}
-      </div>
-
-      {/* Meta Info */}
-      <div className="meta">
-        {rank && <span className="pill">{rank}</span>}
-        {hours && <span className="pill">{hours}h</span>}
-      </div>
-
-      {/* Year */}
-      {hasNew && <p className="year">⭐ {yearstarted}</p>}
-
-      {/* Stats */}
-      <ul className="stat-list">
-        {Object.entries(stats || {}).map(([k, v]) => (
-          <li key={k} className="stat-row">
-            <span className="k">{k}</span>
-            <span className="v">{v}</span>
-          </li>
+    <div className="game-card">
+      <img src={image} alt={name} className="game-image" />
+      <h3>{name}</h3>
+      <p>{ign}</p>
+      <p>{rank}</p>
+      <ul>
+        {stats && Object.entries(stats).map(([key, value]) => (
+          <li key={key}>{key}: {value}</li>
         ))}
       </ul>
-
-      {/* Achievements Section */}
-      <div className="achievements-section">
-        <h5>Achievements</h5>
-        {achievements.length === 0 ? (
-          <p className="empty">No achievements yet.</p>
-        ) : (
-          <ul className="achievements-list">
-            {achievements.map((a, i) => (
-              <li key={i} className="ach-item">
-                <span className="icon">{a.icon}</span>
-                <span className="ach-title">{a.title}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+      <div className="achievements-list">
+        {achievements && achievements.map((a, i) => (
+          <span key={i}>{a.icon} {a.title}</span>
+        ))}
       </div>
     </div>
   );
 }
+
+GameCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  ign: PropTypes.string,
+  hours: PropTypes.number,
+  rank: PropTypes.string,
+  stats: PropTypes.object,
+  image: PropTypes.string.isRequired,
+  achievements: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      icon: PropTypes.string
+    })
+  )
+};
+
+GameCard.defaultProps = {
+  ign: "",
+  hours: 0,
+  rank: "",
+  stats: {},
+  achievements: []
+};

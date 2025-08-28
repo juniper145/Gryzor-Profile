@@ -1,45 +1,34 @@
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-  Legend
-} from "recharts";
+import PropTypes from "prop-types";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-export default function GameStatsChart({ data }) {
-  const sorted = [...data].sort((a, b) => b.hours - a.hours);
-
+export default function ChartCard({ data, title }) {
   return (
     <div className="chart-card">
-      <h2 className="chart-title">Most Played Games</h2>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={sorted}
-          layout="vertical"
-          margin={{ top: 10, right: 10, left: 40, bottom: 10 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.2)" />
-          <XAxis type="number" stroke="#fff" />
-          <YAxis
-            dataKey="name"
-            type="category"
-            stroke="#fff"
-            tick={{ fill: "#fff", fontSize: 14 }}
-            width={60}
-            tickMargin={35}
-
-          />
-          <Tooltip
-            wrapperStyle={{ backgroundColor: "#333", borderRadius: "8px" }}
-          />
-          <Legend />
-          <Bar dataKey="hours" fill="#8884d8" name="Hours Played" radius={[4, 4, 4, 4]} />
+      <h3 className="chart-title">{title}</h3>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+          <XAxis dataKey="name" tick={{ fill: "#ccc" }} />
+          <YAxis tick={{ fill: "#ccc" }} />
+          <Tooltip />
+          <Bar dataKey="hours" fill="#82ca9d" radius={[6, 6, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
 }
+
+ChartCard.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      hours: PropTypes.number.isRequired
+    })
+  ).isRequired,
+  title: PropTypes.string
+};
+
+ChartCard.defaultProps = {
+  title: "Chart"
+};

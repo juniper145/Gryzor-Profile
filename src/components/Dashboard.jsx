@@ -105,7 +105,7 @@ export default function Dashboard() {
   const profile = {
     gamerTag: "Jennifer Leigh Chio",
     discord: "swzvzn",
-    title: " ",
+    title: "Get Good, Lag is my co-pilot.",
     status: "Online",
     hoursAllTime: 3112,
     streakDays: 12,
@@ -156,7 +156,7 @@ export default function Dashboard() {
     {
       name: "Osu!",
       ign: "ryouiki tenkai",
-      hours: 36,
+      hours: 89,
       rank: "B+",
       stats: { "Accuracy %": 96.2, "Best PP": 185 },
       image: osuImg,
@@ -169,7 +169,7 @@ export default function Dashboard() {
     {
       name: "Anime Vanguards",
       ign: "Leigh_Zeee",
-      hours: 190,
+      hours: 480,
       rank: "World 7",
       stats: { Power: 8120, Units: 58 },
       image: avImg,
@@ -195,7 +195,7 @@ export default function Dashboard() {
     {
       name: "Left 4 Dead",
       ign: "nej",
-      hours: 480,
+      hours: 256,
       rank: "Survivor",
       stats: { Campaigns: 12, "Special Infected Kills": 340 },
       image: l4d2Img,
@@ -232,22 +232,26 @@ export default function Dashboard() {
         <GlobalStatsCard {...globalStats} />
         <MilestoneCard {...milestone} />
 
-        {/* 🎮 Game Cards */}
-        {games.map((game, i) => (
-          <GameCard key={i} {...game} className={`card${i + 1}`} />
-        ))}
+        {/* 🎮 Game Cards Grid */}
+        <div className="game-card-container">
+          {games.map((game, i) => (
+            <GameCard key={i} {...game} />
+          ))}
+        </div>
 
-        {/* 🏆 Achievements + Activity */}
-        <ContainerCard
-          title="Achievements"
-          items={achievements}
-          className="achievements-card"
-        />
-        <ContainerCard
-          title="Recent Activity"
-          items={recentActivity}
-          className="recent-activity-card"
-        />
+        {/* 🏆 Achievements + Recent Activity */}
+        <div className="side-container">
+          <ContainerCard
+            title="Achievements"
+            items={achievements}
+            className="achievements-card"
+          />
+          <ContainerCard
+            title="Recent Activity"
+            items={recentActivity}
+            className="recent-activity-card"
+          />
+        </div>
 
         {/* 📊 Chart */}
         <div className="chart-card">
@@ -269,6 +273,3 @@ export default function Dashboard() {
     </div>
   );
 }
-
-// Optional: PropTypes for Dashboard itself (not strictly necessary)
-Dashboard.propTypes = {};
