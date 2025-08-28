@@ -21,6 +21,8 @@ import avImg from "../assets/av.jpg";
 import pfImg from "../assets/pf.png";
 import jen from "../assets/jun.jpg";
 import l4d2Img from "../assets/l4d2.jpg";
+import ae from "../assets/bg.jpg";
+import flag from "../assets/ph.png";
 
 import "../styles/Dashboard.css";
 
@@ -129,7 +131,7 @@ export default function Dashboard() {
   const games = [
     {
       name: "Valorant",
-      ign: "uncle bao#145",
+      ign: "ign: uncle bao#145",
       hours: 1799,
       rank: "Peak Rank: Gold 3",
       stats: { Roles: "Duelist/Sentinel", "HS %": 28, "Winrate %": 52 },
@@ -155,7 +157,7 @@ export default function Dashboard() {
     },
     {
       name: "Osu!",
-      ign: "ryouiki tenkai",
+      ign: "ign: ryouiki tenkai",
       hours: 89,
       rank: "B+",
       stats: { "Accuracy %": 96.2, "Best PP": 185 },
@@ -168,7 +170,7 @@ export default function Dashboard() {
     },
     {
       name: "Anime Vanguards",
-      ign: "Leigh_Zeee",
+      ign: "ign: derp",
       hours: 480,
       rank: "World 7",
       stats: { Power: 8120, Units: 58 },
@@ -181,7 +183,7 @@ export default function Dashboard() {
     },
     {
       name: "Phantom Forces",
-      ign: "Leigh_Zeee",
+      ign: "ign: derp",
       hours: 263,
       rank: "Lvl 86",
       stats: { Kills: 8421, "Winrate %": 55 },
@@ -193,8 +195,8 @@ export default function Dashboard() {
       ]
     },
     {
-      name: "Left 4 Dead",
-      ign: "nej",
+      name: "Left 4 Dead 2",
+      ign: "ign: nej",
       hours: 256,
       rank: "Survivor",
       stats: { Campaigns: 12, "Special Infected Kills": 340 },

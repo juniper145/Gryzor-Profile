@@ -1,3 +1,4 @@
+/* Dashboard */
 .dashboard {
   width: 100%;
   min-height: 100vh;
@@ -6,7 +7,7 @@
               linear-gradient(135deg, #00000097, #07034885, #2a1b0f);
   background-size: 200% 200%;
   animation: neonShift 12s ease infinite;
-  color: rgb(255, 255, 255);
+  color: #fff;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -31,15 +32,28 @@
 
 /* Top row */
 .profile-card {
-  grid-column: 1 / span 2; /* Full width */
+  grid-column: 1 / span 2;
+ background: linear-gradient(180deg,  #0ac3e3, #7383ef);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(73, 8, 225, 0.443);
 }
 
 /* Second row: Stats + Milestone */
 .global-stats {
   grid-column: 1 / span 1;
+  background: #1c1f2b; /* dark background for visibility */
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(35, 65, 153, 0.443);
 }
+
 .milestone-card {
   grid-column: 2 / span 1;
+  background: #1c1f2b;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(45, 18, 197, 0.443);
 }
 
 /* Game Cards Grid */
@@ -50,7 +64,14 @@
   gap: 16px;
 }
 
-/* Side container for achievements + recent activity (optional) */
+.container-card {
+  background: #12151a;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(48, 15, 167, 0.443);
+}
+
+/* Side container for achievements + recent activity */
 .side-container {
   grid-column: 1 / span 2;
   display: flex;
@@ -61,6 +82,10 @@
 .achievements-card, .recent-activity-card {
   flex: 1;
   min-width: 250px;
+  background: #12151a;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2, 230, 131, 0.443);
 }
 
 /* Chart Card */
@@ -72,21 +97,16 @@
   box-shadow: 0 6px 18px rgba(2, 230, 131, 0.443);
 }
 
-/* Container Card & Inner Cards */
-.container-card {
-  background: #12151a;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(2, 230, 131, 0.443);
-}
-
-.container-title {
+/* Container Titles */
+.container-title,
+.chart-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
   color: #fff;
 }
 
+/* Inner Cards */
 .inner-cards {
   display: flex;
   flex-direction: column;
@@ -100,12 +120,6 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-}
-
-.chart-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
   color: #fff;
 }
 
