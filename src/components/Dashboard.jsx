@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ProfileCard from "./ProfileCard";
 import GameCard from "./GameCard";
 import QuestBoard from "./QuestBoard";
@@ -38,6 +39,13 @@ function GlobalStatsCard({ gamesTracked, totalAchievements, avgLevel, weeklyHour
   );
 }
 
+GlobalStatsCard.propTypes = {
+  gamesTracked: PropTypes.number.isRequired,
+  totalAchievements: PropTypes.number.isRequired,
+  avgLevel: PropTypes.number.isRequired,
+  weeklyHours: PropTypes.number.isRequired
+};
+
 // Milestone Card
 function MilestoneCard({ label, description, progress }) {
   return (
@@ -52,7 +60,13 @@ function MilestoneCard({ label, description, progress }) {
   );
 }
 
-//Reusable Container Card
+MilestoneCard.propTypes = {
+  label: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  progress: PropTypes.number.isRequired
+};
+
+// Reusable Container Card
 function ContainerCard({ title, items, className }) {
   return (
     <div className={`container-card ${className || ""}`}>
@@ -74,6 +88,19 @@ function ContainerCard({ title, items, className }) {
   );
 }
 
+ContainerCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      detail: PropTypes.string,
+      icon: PropTypes.string
+    })
+  ).isRequired,
+  className: PropTypes.string
+};
+
+// Dashboard component
 export default function Dashboard() {
   const profile = {
     gamerTag: "Jennifer Leigh Chio",
@@ -242,3 +269,6 @@ export default function Dashboard() {
     </div>
   );
 }
+
+// Optional: PropTypes for Dashboard itself (not strictly necessary)
+Dashboard.propTypes = {};

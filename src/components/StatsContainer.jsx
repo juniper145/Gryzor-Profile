@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/StatsContainer.css";
 
 export default function StatsContainer({
@@ -55,3 +56,13 @@ export default function StatsContainer({
     </div>
   );
 }
+
+StatsContainer.propTypes = {
+  gamesTracked: PropTypes.number,
+  totalAchievements: PropTypes.number,
+  avgLevel: PropTypes.number,
+  weeklyHours: PropTypes.number,
+  milestoneLabel: PropTypes.string,
+  milestoneDescription: PropTypes.string,
+  milestoneProgress: PropTypes.number
+};
